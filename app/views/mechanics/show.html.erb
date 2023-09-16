@@ -1,0 +1,7 @@
+<ul id="single_mechanic">
+  <%= "Mechanic name: #{@mechanic.name}" %></br>
+  <%= "Years of service: #{@mechanic.years_experience}" %> </br>
+  <% @mechanic.rides.each do |ride| %>
+    <td><%= ride.name %></td>
+  <% end %>
+</ul>
