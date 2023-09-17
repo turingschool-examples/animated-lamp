@@ -49,6 +49,7 @@ RSpec.describe "Mechanic Show Page" do
   scenario "i see a form to add a ride to a mechanic's work load on the show page for that mechanic" do 
     visit "/mechanics/#{@mechanic_2.id}"
 
+    save_and_open_page
     within "#ride_queue" do 
       expect(page).to have_content("The Hurler")
       expect(page).to have_content("Tea Cups")
@@ -59,7 +60,8 @@ RSpec.describe "Mechanic Show Page" do
       fill_in "Add Ride", with: "#{@ride_3.id}"
       click_button "Submit"
     end
-    expect(current_page).to eq("/mechanics/#{@mechanic_2.id}")
+
+    expect(current_path).to eq("/mechanics/#{@mechanic_2.id}")
 
     within "#ride_queue" do 
       expect(page).to have_content("Tower of Terror")

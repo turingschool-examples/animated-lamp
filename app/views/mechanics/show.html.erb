@@ -5,11 +5,20 @@
 </section>
 
 <section id="ride_queue">
- <h2>Current rides they're working on:</h2>
- 
+ <h2>Current rides they are working on:</h2>
+
   <% @mechanic.rides.each do |ride| %>
     <ul>
       <li><%= ride.name %></li>
     </ul>
+  <% end %>
+</section>
+
+<section id="add_to_queue"> 
+  <%= form_with model: RideMechanic, data: {turbo: false} do |form| %>
+    <%= hidden_field_tag(:mechanic_id, @mechanic.id) %>
+    <p><strong><%= form.label :add_ride, "Add Ride" %></strong></p>
+    <p><stong><%= form.number_field :add_ride %></strong></p>
+    <p><%= form.submit 'Submit' %></p>
   <% end %>
 </section>
