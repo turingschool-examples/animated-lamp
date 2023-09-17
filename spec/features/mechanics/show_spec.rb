@@ -32,7 +32,7 @@ RSpec.describe "Mechanic Show Page" do
 
   scenario "when I visit a mechanic show page, I see their name and years of experience, and all rides they are working on" do 
     visit "/mechanics/#{@mechanic_1.id}"
-    save_and_open_page
+
 
     within "#mechanic_details" do 
       expect(page).to have_content("Mechanic: Kara Smith")
@@ -42,6 +42,27 @@ RSpec.describe "Mechanic Show Page" do
     within "#ride_queue" do 
       expect(page).to have_content("The Hurler")
       expect(page).to have_content("Ferris Wheel")
+    end
+
+  end
+
+  scenario "i see a form to add a ride to a mechanic's work load on the show page for that mechanic" do 
+    visit "/mechanics/#{@mechanic_2.id}"
+
+    within "#ride_queue" do 
+      expect(page).to have_content("The Hurler")
+      expect(page).to have_content("Tea Cups")
+    end
+
+    within "#add_to_queue" do 
+      expect(page).to have_field("Add Ride")
+      fill_in "Add Ride", with: "#{@ride_3.id}"
+      click_button "Submit"
+    end
+    expect(current_page).to eq("/mechanics/#{@mechanic_2.id}")
+
+    within "#ride_queue" do 
+      expect(page).to have_content("Tower of Terror")
     end
 
   end
