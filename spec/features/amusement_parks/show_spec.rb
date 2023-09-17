@@ -55,8 +55,6 @@ RSpec.describe "Amusement Park Show Page", type: :feature do
 
         visit amusement_park_path(amusement_park_1.id)
 
-        save_and_open_page
-
         expect(page).to have_content("#{amusement_park_1.name}")
         expect(page).to have_content("Price: #{amusement_park_1.admission_cost}")
 
