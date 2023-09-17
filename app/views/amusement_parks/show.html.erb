@@ -1,0 +1,9 @@
+<ul id="single_amusement_park">
+  <%= "Name: #{@amusement_park.name}" %></br>
+  <%= "Entry cost: #{@amusement_park.admission_cost}" %> </br>
+
+  <h2>List of mechanics working on rides:</h2>
+  <% @amusement_park.current_mechanics.each do |mechanic| %>
+    <td><%= mechanic.name %></td></br>
+  <% end %></br>
+</ul>

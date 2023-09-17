@@ -33,7 +33,6 @@ RSpec.describe "the mechanic show page" do
       expect(page).to have_content(mechanic.name)
       expect(page).to have_content(mechanic.years_experience)
       expect(page).to have_content(ride_1.name)
-      save_and_open_page
     end
   end
 end

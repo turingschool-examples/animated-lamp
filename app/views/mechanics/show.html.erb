@@ -7,7 +7,7 @@
     <td><%= ride.name %></td>
   <% end %></br>
 
-  <h2>Add a ride to workload:</h2></br>
+  <h2>Add a ride to workload:</h2>
   <%= form_with url: "/mechanics/#{@mechanic.id}", method: :post, data: { turbo: false } do |f| %>
     Ride Id: <%= f.text_field :ride_id %><br>
   <%= f.submit "Submit"%>
