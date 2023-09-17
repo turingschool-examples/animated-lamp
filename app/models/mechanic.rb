@@ -1,3 +1,4 @@
 class Mechanic < ApplicationRecord
-    has_and_belongs_to_many :rides
-end
+    has_many :mechanic_rides
+    has_many :rides, through: :mechanic_rides
+  end
