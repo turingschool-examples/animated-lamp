@@ -3,6 +3,13 @@
 <p>Years of Experience: <%= @mechanic.years_experience %></p>
 
 <h2>Rides:</h2>
+<p>Add a ride to workload:</p>
+<%= form_with url: mechanic_rides_path(@mechanic.id), method: :post, data: { turbo: false } do |form| %>
+  <%= form.label :ride_id, "Ride Id:" %>
+  <%= form.number_field :ride_id %>
+  <%= form.submit "Submit" %>
+<% end %>
+
 <section id="rides">
   <% @mechanic.rides.each do |ride| %>
     <p><%= ride.name %></p>
