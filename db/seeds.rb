@@ -27,7 +27,19 @@ mechanic_2 = Mechanic.create!(
   years_experience: 2
 )
 
+mechanic_3 = Mechanic.create!(
+  name: "Eliza Engineer",
+  years_experience: 25
+)
+
+mechanic_4 = Mechanic.create!(
+  name: "Bob Builder",
+  years_experience: 40
+)
+
 RideMechanic.create!(mechanic: mechanic_1, ride: hurler)
 RideMechanic.create!(mechanic: mechanic_1, ride: scrambler)
 RideMechanic.create!(mechanic: mechanic_2, ride: scrambler)
 RideMechanic.create!(mechanic: mechanic_2, ride: ferris)
+RideMechanic.create!(mechanic: mechanic_3, ride: jaws)
+RideMechanic.create!(mechanic: mechanic_4, ride: jaws)
