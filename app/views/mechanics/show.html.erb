@@ -1,7 +1,15 @@
 <ul id="single_mechanic">
-  <%= "Mechanic name: #{@mechanic.name}" %></br>
-  <%= "Years of service: #{@mechanic.years_experience}" %> </br>
+  <%= "Mechanic: #{@mechanic.name}" %></br>
+  <%= "Years of Experience: #{@mechanic.years_experience}" %> </br>
+
+  <h2>Current rides they're working on:</h2>
   <% @mechanic.rides.each do |ride| %>
     <td><%= ride.name %></td>
+  <% end %></br>
+
+  <h2>Add a ride to workload:</h2></br>
+  <%= form_with url: "/mechanics/#{@mechanic.id}", method: :post, data: { turbo: false } do |f| %>
+    Ride Id: <%= f.text_field :ride_id %><br>
+  <%= f.submit "Submit"%>
   <% end %>
 </ul>
