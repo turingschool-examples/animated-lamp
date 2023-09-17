@@ -1,0 +1,9 @@
+<h1><%= @amusement_park.name %></h1>
+<p>Admission Price: $<%= @amusement_park.admission_cost %></p>
+
+<h2>Mechanics Working on Rides:</h2>
+<ul>
+  <% @amusement_park.rides.flat_map(&:mechanics).uniq.each do |mechanic| %>
+    <li><%= mechanic.name %></li>
+  <% end %>
+</ul>
