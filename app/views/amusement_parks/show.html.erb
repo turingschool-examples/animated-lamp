@@ -1,0 +1,12 @@
+<h1><%= @amusement_park.name %></h1>
+
+<p>Price: <%= @amusement_park.admission_cost %></p>
+
+<h2>Mechanics working on rides:</h2>
+<section id="mechanics">
+  <% @amusement_park.find_mechanics.each do |mechanic| %>
+    <p><%= mechanic.name %></p>
+  <% end %>
+</section>
+
+<%# SELECT mechanics.name FROM amusement_parks INNER JOIN rides ON amusement_parks.id = rides.amusement_park_id INNER JOIN ride_mechanics ON rides.id = ride_mechanics.ride_id INNER JOIN mechanics ON ride_mechanics.mechanic_id = mechanics.id; %>
