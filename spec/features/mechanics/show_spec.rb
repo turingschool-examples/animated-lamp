@@ -31,7 +31,8 @@ RSpec.describe "Mechanic Show Page" do
   end
 
   scenario "when I visit a mechanic show page, I see their name and years of experience, and all rides they are working on" do 
-    visit "/mechanic/#{@mechanic_1.id}"
+    visit "/mechanics/#{@mechanic_1.id}"
+    save_and_open_page
 
     within "#mechanic_details" do 
       expect(page).to have_content("Mechanic: Kara Smith")
