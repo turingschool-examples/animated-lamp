@@ -7,3 +7,10 @@
     <td><%= mechanic.name %></td></br>
   <% end %></br>
 </ul>
+
+
+  <h2>List of park rides and average mechanic experience:</h2>
+  <% @amusement_park.rides_with_average_mechanic_years.each do |ride| %>
+    <td><%= ride.name %></td></br>
+    <td><%= ride.avg %></td></br>
+  <% end %></br>
