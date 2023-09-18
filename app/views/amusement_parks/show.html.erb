@@ -7,3 +7,10 @@
   <li><%= mechanic.name %></li>
 <% end %>
 </ul>
+
+<h3><%= @amusement_park.name %>'s Rides:</h3>
+<ul>
+<% @amusement_park.rides.each do |ride| %>
+  <li><%= ride.name %>, Mechanic Average Experience: <%= ride.avg_mechanic_experience %></li>
+<% end %>
+</ul>
