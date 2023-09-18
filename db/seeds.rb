@@ -21,9 +21,9 @@ RideMechanic.destroy_all
 @log_flume = @universal.rides.create!(name: 'Log Flume', thrill_rating: 8, open: true)
 @twister = @universal.rides.create!(name: 'Twister', thrill_rating: 9, open: false)
 
-@Steve = Mechanic.create!(name: 'Steve', year_experience: 5)
-@Amanda = Mechanic.create!(name: 'Amanda', year_experience: 10)
-@Will = Mechanic.create!(name: 'Will', year_experience: 3)
+@Steve = Mechanic.create!(name: 'Steve', years_experience: 5)
+@Amanda = Mechanic.create!(name: 'Amanda', years_experience: 10)
+@Will = Mechanic.create!(name: 'Will', years_experience: 3)
 
 @ride_mechanic1 = RideMechanic.create!(ride: @hurler, mechanic: @Steve)
 @ride_mechanic2 = RideMechanic.create!(ride: @hurler, mechanic: @Amanda)

@@ -13,9 +13,9 @@ RSpec.describe "When I visit '/mechanics/:id'" do
     @log_flume = @universal.rides.create!(name: 'Log Flume', thrill_rating: 8, open: true)
     @twister = @universal.rides.create!(name: 'Twister', thrill_rating: 9, open: false)
 
-    @Steve = Mechanic.create!(name: 'Steve', year_experience: 5)
-    @Amanda = Mechanic.create!(name: 'Amanda', year_experience: 10)
-    @Will = Mechanic.create!(name: 'Will', year_experience: 3)
+    @Steve = Mechanic.create!(name: 'Steve', years_experience: 5)
+    @Amanda = Mechanic.create!(name: 'Amanda', years_experience: 10)
+    @Will = Mechanic.create!(name: 'Will', years_experience: 3)
 
     @ride_mechanic1 = RideMechanic.create!(ride: @hurler, mechanic: @Steve)
     @ride_mechanic2 = RideMechanic.create!(ride: @hurler, mechanic: @Amanda)
@@ -27,7 +27,9 @@ RSpec.describe "When I visit '/mechanics/:id'" do
       visit "/mechanics/#{@Amanda.id}"
 
       expect(page).to have_content(@Amanda.name)
-      expect(page).to have_content(@Amanda.year_experience)
+      expect(page).to have_content(@Amanda.years_experience)
+
+      expect(page).to have_content("Rides on their Docket")
       expect(page).to have_content(@hurler.name)
       expect(page).to have_content(@scrambler.name)
     end
