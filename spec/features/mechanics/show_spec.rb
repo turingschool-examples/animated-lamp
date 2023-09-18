@@ -49,7 +49,6 @@ RSpec.describe "Mechanic Show Page" do
   scenario "i see a form to add a ride to a mechanic's work load on the show page for that mechanic" do 
     visit "/mechanics/#{@mechanic_2.id}"
 
-    save_and_open_page
     within "#ride_queue" do 
       expect(page).to have_content("The Hurler")
       expect(page).to have_content("Tea Cups")

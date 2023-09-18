@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get "/mechanics/:mechanic_id", to: "mechanics#show"
 
   resources :ride_mechanics, only: [:create]
+
+  resources :amusement_parks, only: [:show]
 end

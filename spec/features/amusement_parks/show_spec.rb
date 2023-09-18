@@ -42,9 +42,10 @@ RSpec.describe "When I visit the Amusement Park Show Page" do
 
   scenario "I see the names of all mechanics that are working on the park's rides, this list is unique (no duplicates)" do 
     visit "/amusement_parks/#{@ap_1.id}"
+    save_and_open_page
 
     within "#active_mechanics" do 
-      expect(page).to have_content("Park Mechanics: ")
+      expect(page).to have_content("Park Mechanics:")
       expect(page).to have_content("Kara Smith")
       expect(page).to have_content("Sara Campbell")
       expect(page).to have_content("Patty Applebee")
