@@ -7,6 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 AmusementPark.destroy_all
 Ride.destroy_all
+Mechanic.destroy_all
+RideMechanic.destroy_all
 
 @six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
 @universal = AmusementPark.create!(name: 'Universal Studios', admission_cost: 80)
