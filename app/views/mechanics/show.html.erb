@@ -12,11 +12,12 @@
     <li><%= ride.name %></li>
   <% end %>
 </ul>
-
+<br>
 <section id="ride-form">
+  <p>Add a ride to workload:</p>
   <%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, data: { turbo: false } do |form| %>
     <%= form.label :ride_id, "Ride ID:" %>
-    <%= form.text_field :ride_id %>
+    <%= form.text_field :ride_id %><br>
     <%= form.submit "Add Ride" %>
   <% end %>
 </section>
