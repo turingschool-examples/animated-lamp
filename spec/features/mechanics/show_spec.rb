@@ -33,5 +33,19 @@ RSpec.describe "When I visit '/mechanics/:id'" do
       expect(page).to have_content(@hurler.name)
       expect(page).to have_content(@scrambler.name)
     end
+    
+    it "I see a form to add a ride to their docket" do 
+      visit "/mechanics/#{@Amanda.id}"
+
+      expect(page).to have_content("Add a ride to docket")
+      expect(page).to have_field(:ride_id)
+
+      fill_in(:ride_id, with: @jaws.id)
+      expect(page).to have_button("Add Ride")
+      click_button("Add Ride")
+
+      expect(current_path).to eq("/mechanics/#{@Amanda.id}")
+      expect(page).to have_content(@jaws.name)
+    end
   end
 end
