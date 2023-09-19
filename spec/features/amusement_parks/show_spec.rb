@@ -4,10 +4,12 @@ RSpec.describe "Amusement Park Show Page", type: :feature do
   before(:each) do
     @six_flags = AmusementPark.create!(name: "Six Flags", admission_cost: 75)
     @joe = Mechanic.create!(name: "Joe", years_experience: 10)
+    @bob = Mechanic.create!(name: "Bob", years_experience: 2)
     @twirlygig = @six_flags.rides.create!(name: "twirlygig", thrill_rating: 4, open: false)
     @mind_eraser = @six_flags.rides.create!(name: "Mind Eraser", thrill_rating: 10, open: false)
     RideMechanic.create!(ride_id: @twirlygig.id, mechanic_id: @joe.id)
     RideMechanic.create!(ride_id: @mind_eraser.id, mechanic_id: @joe.id)
+    RideMechanic.create!(ride_id: @mind_eraser.id, mechanic_id: @bob.id)
   end
   describe "As a visitor" do
     describe "When I visit /amusement_parks/:id" do
@@ -29,8 +31,9 @@ RSpec.describe "Amusement Park Show Page", type: :feature do
       it "and I see that the list of mechanics is unique" do
 
         visit "/amusement_parks/#{@six_flags.id}"
-        save_and_open_page
+        
         expect(page).to have_content(@joe.name, count: 1)
+        expect(page).to have_content(@bob.name, count: 1)
       end
     end
   end
