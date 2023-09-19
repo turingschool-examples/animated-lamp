@@ -40,10 +40,17 @@ RSpec.describe "Mechanic Show Page", type: :feature do
           expect(page).to have_content("Ferris")
           expect(page).to_not have_content("Scrambler")
         end
-        save_and_open_page
+        # save_and_open_page
 
         expect(page).to have_content("Add a ride to workload:")
         expect(page).to have_field("Ride Id")
+        fill_in "Ride Id", with: "2"
+        click_button "Submit"
+        expect(current_path).to eq("/merchants/#{@alex.id}")
+        
+        within("div.ride-list") do
+          expect(page).to have_content("Scrambler")
+        end
       end
     end
   end
