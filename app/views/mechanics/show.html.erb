@@ -9,3 +9,11 @@
   <%= ride.name %></br>
 
   <% end %>
+<h3> Add a ride to workload: </h3>
+  <%= form_with url: "/mechanic_rides/", method: :create, data: { turbo: false} do |f| %>
+  <%= f.hidden_field :mechanic_id, :value=>"#{@mechanic.id}" %>
+  <%= f.label :ride_id, "Ride Id:" %>
+  <%= f.number_field :ride_id %>
+
+    <%= f.submit "Submit" %>
+<% end %>
