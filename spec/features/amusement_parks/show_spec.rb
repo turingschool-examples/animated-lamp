@@ -24,4 +24,20 @@ RSpec.describe "As a visitor when I visit '/amusement_parks/:id" do
       expect(page).not_to have_content(@teddy.name)
     end
   end
+
+  # Extension
+  it "I see a list of all of the park's rides ordered by average experience of the mechanics working on the ride" do
+    visit "/amusement_parks/#{@six_flags.id}"
+
+    within("#rides") do
+      expect(@ferris.name).to appear_before(@hurler.name)
+      expect(@hurler.name).to appear_before(@scrambler.name)
+      expect(page).not_to have_content(@jaws.name)
+
+      within("#ride-#{@ferris.id}") do
+        expect(page).to have_content(@ferris.name)
+        expect(page).to have_content("Average Experience of Mechanics: #{@hurler.average_experience}")
+      end
+    end
+  end
 end
