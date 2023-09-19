@@ -44,7 +44,7 @@ RSpec.describe "Mechanic Show Page", type: :feature do
 
         expect(page).to have_content("Add a ride to workload:")
         expect(page).to have_field("Ride Id:")
-        fill_in "Ride Id:", with: 2
+        fill_in "Ride Id:", with: "#{@scrambler.id}"
         click_button "Submit"
         expect(current_path).to eq("/mechanics/#{@alex.id}")
 

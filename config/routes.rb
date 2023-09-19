@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get "/mechanics/:id", to: "mechanics#show"
-  patch "/mechanics/:id", to: "mechanics#update"
+
+  post "/ride_mechanics/", to: "ride_mechanics#create"
 end
