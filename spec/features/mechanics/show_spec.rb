@@ -10,11 +10,11 @@ RSpec.describe "display individual mechanic" do
     coaster = Ride.create!(name: "Coaster", thrill_rating: 5, open: false, amusement_park: park)
     drop = Ride.create!(name: "Drop", thrill_rating: 6, open: false, amusement_park: park)
 
-    MechanicRide.create!(machanic: mechanic, ride: swing)
-    MechanicRide.create!(machanic: mechanic, ride: coaster)
-    MechanicRide.create!(machanic: mechanic, ride: drop)
+    MechanicRide.create!(mechanic: mechanic, ride: swing)
+    MechanicRide.create!(mechanic: mechanic, ride: coaster)
+    MechanicRide.create!(mechanic: mechanic, ride: drop)
 
-    visit 'mechanics/:id'
+    visit "mechanics/#{mechanic.id}"
 
     expect(page).to have_content("Dave")
     expect(page).to have_content("1618")
