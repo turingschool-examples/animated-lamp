@@ -1,12 +1,7 @@
 require "rails_helper"
 
-RSpec.describe AmusementPark, type: :model do
-  describe "relationships" do
-    it { should have_many(:rides) }
-    it { should have_many(:mechanics).through(:rides) }
-  end
-
-  it "can list its unique mechanics" do
+RSpec.describe "Amusment Park Show" do
+  it "shows the amusement park's attributes and mechanics" do
     sixflags = AmusementPark.create!(name: "Six Flags", admission_cost: 314)
 
     dave = Mechanic.create!(name: "Dave", years_of_experience: 21)
@@ -26,6 +21,12 @@ RSpec.describe AmusementPark, type: :model do
     MechanicRide.create!(mechanic: ethan, ride: spin)
     MechanicRide.create!(mechanic: frank, ride: bump)
 
-    expect(sixflags.uniq_mechanics).to match_array([dave, ethan, frank])
+    visit "amusement_parks/#{sixflags.id}"
+
+    expect(page).to have_content("Six Flags")
+    expect(page).to have_content("314")
+    expect(page).to have_content("Dave")
+    expect(page).to have_content("Ethan")
+    expect(page).to have_content("Frank")
   end
 end

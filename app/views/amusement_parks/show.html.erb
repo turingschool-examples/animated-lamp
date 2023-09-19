@@ -1,0 +1,7 @@
+<h1> <%= "#{@amusement_park.name}'s Homepage" %> </h1>
+cost: <%= @amusement_park.admission_cost %></br>
+
+Currently working on rides are: </br>
+<% @amusement_park.uniq_mechanics.each do |mechanic| %>
+  <%= mechanic.name %></br>
+<% end %>
