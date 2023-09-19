@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :mechanics, only: [:show, :update]
 
+  resources :amusement_parks, only: [:show]
+
 end

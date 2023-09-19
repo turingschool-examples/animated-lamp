@@ -1,0 +1,6 @@
+<%= @amusement_park.name %>
+<%= @amusement_park.admission_cost %>
+
+<% @amusement_park.unique_mechanics.each do |mechanic| %>
+<%= mechanic.name %>
+<% end %>
