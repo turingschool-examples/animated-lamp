@@ -4,7 +4,20 @@
 <h2>Mechnic Information </h2>
   <p>Name: <%= @mechanic.name%></p>
   <p>Years of Experience: <%= @mechanic.years_experience%></p>
-  <p>Maintenance on Rides: <% @mechanic.rides.each do |ride| %></p> 
-    <%= ride.name %>
+</div>
+
+<div id= "current_rides">
+<h2>Current Maintenace Rides</h2>
+  <% @mechanic.rides.each do |ride| %>
+    <p><%= ride.name %></p> 
   <% end %>
+</div>
+
+<div id= "add_ride">
+<h2>Add Ride to Workload </h2>
+  <%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post do |form| %>
+    <%= form.label :ride_id, 'Ride ID'%>
+    <%= form.text_field :ride_id%>
+    <%= form.submit 'Submit' %>
+  <% end%>
 </div>
