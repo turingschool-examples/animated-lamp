@@ -53,5 +53,17 @@ RSpec.describe "Mechanics Show", type: :feature do
         expect(page).to have_content(@ride_2.name)
       end
     end
+
+    it "when the form is filled with an invalid ride ID, a flash error is shown" do
+      visit "/mechanics/#{@mechanic_1.id}"
+      
+      within("#ride-form") do
+        fill_in("ride_id", with: "a")
+        click_button("Add Ride")
+      end
+
+      expect(page).to have_current_path("/mechanics/#{@mechanic_1.id}")
+      expect(page).to have_content("Could not add the ride specified.")
+    end
   end
 end
