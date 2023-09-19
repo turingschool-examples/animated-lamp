@@ -6,5 +6,9 @@
 
 <h4>Rides Currently Servicing:</h4>
 <div class="ride-list">
-  <p><%= @mechanic.rides %></p>
+  <ul>
+    <% @mechanic.working_ride_list.each do |ride_name| %>
+      <li><%= ride_name %></li>
+    <% end %>
+  </ul>
 </div>

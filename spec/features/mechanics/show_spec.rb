@@ -26,10 +26,10 @@ RSpec.describe "Mechanic Show Page", type: :feature do
     describe "When I visit a mechanic show page" do
       it "Shows their name, experience, and rides they're currently working on" do
         expect(page).to have_content("Alex's Show Page")
-        save_and_open_page
         expect(page).to have_content("Name: Alex")
         expect(page).to have_content("Years of Experience: 20")
         expect(page).to have_content("Rides Currently Servicing:")
+        save_and_open_page
         within("div.ride-list") do
           expect(page).to have_content("Hurler")
           expect(page).to have_content("Ferris")
