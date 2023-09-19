@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Mechanic Show Page' do
+RSpec.describe 'Amusement Show Page' do
   before :each do
     @six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
     @universal = AmusementPark.create!(name: 'Universal Studios', admission_cost: 80)
@@ -23,18 +23,15 @@ RSpec.describe 'Mechanic Show Page' do
     MechanicsRide.create!(mechanic_id: @mechanic_3.id, ride_id: @ferris.id)
   end
 
-  describe 'As a user when I visit a mechanic show page' do
-    it "I see their name, years of experience, and names of all rides that they work on" do
-
-      visit mechanic_path(@mechanic_1)
-
-      # within('#mechanic_info') do this is for some reason not registering with my section but wanted to say I was troubleshooting it
-        expect(page).to have_content(@mechanic_1.name)
-        expect(page).to have_content(@mechanic_1.years_experience)
-        expect(page).to have_content("Rides they're working on:")
-        expect(page).to have_content(@hurler.name)
-        expect(page).to have_content(@scrambler.name)
-      # end
+  describe 'As a user when I visit an amusement park show page' do
+    it "I see the name and price of admissions for that amusement park" do
+        
+        visit amusement_park_path(@six_flags)
+  
+        # within("amusement_park_info") do this is for some reason not registering with my section but wanted to say I was troubleshooting it
+          expect(page).to have_content(@six_flags.name)
+          expect(page).to have_content(@six_flags.admission_cost)
+        # end
+      end
     end
-  end 
 end

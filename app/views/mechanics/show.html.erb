@@ -1,0 +1,22 @@
+<h1> Mechanics Show Page </h1>
+
+<section class="mechanic_info">
+<h2> Mechanic Name: <%= @mechanic.name %> </h2>
+<h3> Years of Experience: <%= @mechanic.years_experience %> </h3>
+
+<h3> Rides they're working on: </h3>
+<ul>
+  <% @mechanic.rides.each do |ride| %>
+    <li><%= ride.name %></li>
+  <% end %>
+</ul>
+</section>
+
+<h3> Add a ride to workload: </h3>
+<%= form_with url: mechanic_create_ride_path(@mechanic), method: :post do |f| %>
+  <div class="form-group">
+    <%= f.label :ride_id %>
+    <%= f.text_field :ride_id, class: "form-control", name: "mechanic[ride_id]" %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
