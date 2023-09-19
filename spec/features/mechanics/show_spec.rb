@@ -32,7 +32,7 @@ RSpec.describe "the Mechanics show page", type: :feature do
         click_button "Submit"
 
         expect(current_path).to eq(mechanic_path(@mechanic))
-save_and_open_page
+
         within("#rides") do
           expect(page).to have_content(@ride1.name)
           expect(page).to have_content(@ride2.name)

@@ -1,0 +1,21 @@
+<h1><%= @park.name %></h1>
+<br>
+<h3>Price of Admission: <%= @park.admission_cost %></h3>
+<br>
+<h3>Mechanics:</h3>
+<section id="mechanics">
+  <ul style="list-style-type:none">
+    <% @mechanics.each do |mechanic| %>
+      <li><%= mechanic.name %></li>
+    <% end %>
+  </ul>
+</section>
+<h3>Rides:</h3>
+<section id="rides">
+  <ul style="list-style-type:none">
+    <% @rides.each do |ride| %>
+      <li><%= ride.name %></li>
+      <li>Average Mechanic Experience: <%= ride.avg %> years</li><br>
+    <% end %>
+  </ul>
+</section>
