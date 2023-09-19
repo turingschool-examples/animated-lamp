@@ -24,4 +24,22 @@ RSpec.describe "As a user when I visit '/mechanics/:id" do
       expect(page).not_to have_content(@ferris.name)
     end
   end
+
+  # User Story 2
+  it "I see a form to add a ride to their workload"
+  visit "/mechanics/#{@kara.id}"
+
+  within("#add_ride") do
+    fill_in :ride_id, with: "#{@ferris.id}"
+
+    click_button "Add Ride"
+  end
+
+  expect(current_path).to eq("/mechanics/#{@kara.id}")
+
+  within("#rides_working_on") do
+    within("#ride-#{@ferris.id}") do
+      expect(page).to have_content(@ferris.name)
+    end
+  end
 end
