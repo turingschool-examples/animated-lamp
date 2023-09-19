@@ -24,27 +24,35 @@ RSpec.describe "Amusement Park Show Page", type: :feature do
       it "and I see the names of all mechanics workin on that parks rides" do
 
         visit "/amusement_parks/#{@six_flags.id}"
-
-        expect(page).to have_content(@joe.name)
+        
+        within('.mechanics') do
+          expect(page).to have_content(@joe.name)
+          expect(page).to have_content(@bob.name)
+        end
       end
 
       it "and I see that the list of mechanics is unique" do
 
         visit "/amusement_parks/#{@six_flags.id}"
 
-        expect(page).to have_content(@joe.name, count: 1)
-        expect(page).to have_content(@bob.name, count: 1)
+        within('.mechanics') do
+          expect(page).to have_content(@joe.name, count: 1)
+          expect(page).to have_content(@bob.name, count: 1)
+        end
+
       end
 
       it "I see a list of all the parks rides" do
 
         visit "/amusement_parks/#{@six_flags.id}"
 
-        expect(page).to have_content(@twirlygig.name)
-        expect(page).to have_content(@mind_eraser.name)
-
-        expect(page).to have_content("AVG Mechanic Experience: #{@joe.years_experience}")
-        expect(page).to have_content("AVG Mechanic Experience: 6")
+        within('.rides') do
+          expect(page).to have_content(@twirlygig.name)
+          expect(page).to have_content(@mind_eraser.name)
+  
+          expect(page).to have_content("AVG Mechanic Experience: #{@joe.years_experience}")
+          expect(page).to have_content("AVG Mechanic Experience: 6")
+        end
       end
 
       it "I see the list of park rides is ordered by the average experience of mechanics on the ride" do
