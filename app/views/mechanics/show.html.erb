@@ -1,11 +1,11 @@
 <h1><%= @mechanic.name %></h1>
 <h3>Years of Experience: <%= @mechanic.years_experience %></h3>
-<ul id="rides">
+<p id="rides">
 <h3>Rides worked on:</h3>
 <% @mechanic.rides.each do |ride| %>
   <li><%= ride.name %></li>
 <% end %>
-</ul>
+</p>
 
 <h2>Add Ride to Workload:</h2>
 <%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, data: {turbo: false} do |f| %>
