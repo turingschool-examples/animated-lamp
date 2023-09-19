@@ -4,3 +4,9 @@
 <% @mechanic.rides.each do |ride| %>
   <%= ride.name %>
 <% end %>
+
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, data: { turbo: false } do |form| %>
+  <%= form.label :ride_id, "Ride ID" %>
+  <%= form.text_field :ride_id %>
+  <%= form.submit "Submit" %>
+<% end %>
