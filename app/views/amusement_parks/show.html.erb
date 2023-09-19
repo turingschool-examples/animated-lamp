@@ -1,0 +1,14 @@
+<h1>Welcome to: <%= @parks.name %></h1>
+
+
+<h3>Admission Cost:<%= @parks.admission_cost %>
+
+<section id="mechanics">
+  <ul>
+  <% @parks.rides.each do |ride| %>
+    <li>
+    <p><%= "#{ride.mechanics_working}" %></p>
+    </li>
+  <% end %>
+  </ul>
+</section>
