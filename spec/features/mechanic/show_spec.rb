@@ -27,9 +27,9 @@ RSpec.describe "Mechanic Show Page", type: :feature do
 
         visit "/mechanics/#{@joe.id}"
 
-        fill_in "Add Ride", with: @mind_eraser.id
+        fill_in "ride_id", with: @mind_eraser.id
         click_on "Submit"
-        save_and_open_page
+
         expect(page).to have_content(@mind_eraser.name)
       end
     end

@@ -7,6 +7,6 @@
   <% end %>
 </ul>
 <%= form_with url: "/mechanics/#{@mechanic.id}/ride_mechanics", method: :post, data: {turbo: false} do |f| %>
-  <%= f.text_field "Add Ride" %>
+  <%= f.text_field "ride_id" %>
   <%= f.submit "Submit" %>
 <% end %>
