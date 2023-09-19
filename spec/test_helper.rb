@@ -15,7 +15,7 @@ def load_test_data
   @kara_hurler = @kara.mechanic_rides.create!(mechanic_id: @kara.id, ride_id: @hurler.id)
   @kara_scrambler = @kara.mechanic_rides.create!(mechanic_id: @kara.id, ride_id: @scrambler.id)
 
-  @bart_ferris = @bart.mechanic_rides.create!(mechanic_id: @bard.id, ride_id: @ferris.id)
+  @bart_ferris = @bart.mechanic_rides.create!(mechanic_id: @bart.id, ride_id: @ferris.id)
 
   @teddy_jaws = @teddy.mechanic_rides.create!(mechanic_id: @teddy.id, ride_id: @jaws.id)
 end

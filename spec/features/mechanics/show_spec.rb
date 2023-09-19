@@ -28,13 +28,13 @@ RSpec.describe "As a user when I visit '/mechanics/:id" do
   # User Story 2
   it "I see a form to add a ride to their workload" do
     visit "/mechanics/#{@kara.id}"
-  save_and_open_page
+
     within("#add_ride") do
       fill_in :ride_id, with: "#{@ferris.id}"
 
       click_button "Add Ride"
     end
-  save_and_open_page
+
     expect(current_path).to eq("/mechanics/#{@kara.id}")
 
     within("#rides_working_on") do
