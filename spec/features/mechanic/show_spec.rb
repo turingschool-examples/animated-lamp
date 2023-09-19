@@ -22,13 +22,35 @@ RSpec.describe "mechanics show page" do
       visit "/mechanics/#{@mechanic_1.id}"
       expect(page).to have_content(@mechanic_1.name)
       expect(page).to have_content(@mechanic_1.years_experience)
-      expect(page).to have_content('The Hurler')
-      expect(page).to have_content('Ferris Wheel')
+      expect(page).to have_content(@ride_1.name)
+      expect(page).to have_content(@ride_3.name)
       
       expect(page).to_not have_content(@mechanic_2.name)
       expect(page).to_not have_content(@mechanic_2.years_experience)
-      expect(page).to_not have_content('The Scrambler')
+      expect(page).to_not have_content(@ride_2.name)
     end
 
+  # --------  Story 2 - Add a Ride to a Mechanic
+  # I see a form to add a ride to their workload
+  # When I fill in that field with an id of an existing ride and click Submit
+  # I’m taken back to that mechanic's show page
+  # And I see the name of that newly added ride on this mechanic's show page.
+    it "shows a form to add a ride to their workload" do
+      visit "/mechanics/#{@mechanic_1.id}"
+    expect(page).to have_content(@ride_1.name)
+    expect(page).to have_content(@ride_3.name)
+    expect(page).not_to have_content(@ride_2.name)
+
+    within("#add_ride") do
+      expect(page).to have_content("Add a ride to #{@mechanic_1.name}'s workload")
+      fill_in "new_ride_id", with: "#{@ride_2.id}"
+      click_button "Save"
+      expect(page).to have_current_path("/mechanics/#{@mechanic_1.id}")
+    end
+    expect(page).to have_content(@ride_1.name)
+    expect(page).to have_content(@ride_2.name)
+    expect(page).to have_content(@ride_3.name)
+
+    end
   end
 end
