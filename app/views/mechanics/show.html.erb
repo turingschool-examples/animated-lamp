@@ -9,3 +9,10 @@
     <% end %>
   </ol>
 </section>
+
+<h1> Add Ride </h1>
+<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, data: { turbo: false } do |form| %> 
+  <%= form.label :ride_id, "Ride Id" %><br>
+  <%= form.text_field :ride_id %>
+  <%= form.submit "Add Ride" %>
+<% end %>
