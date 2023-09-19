@@ -37,5 +37,25 @@ RSpec.describe AmusementPark, type: :model do
     it "#unique_mechanics" do
       expect(@six_flags.unique_mechanics).to eq([@Steve, @Amanda, @Will])
     end
+
+    it "#average_mechanic_experience_on_ride" do
+      six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
+      ride1 = six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
+      ride2 = six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
+      ride3 = six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
+      steve = Mechanic.create!(name: 'Steve', years_experience: 5)
+      amanda = Mechanic.create!(name: 'Amanda', years_experience: 10)
+      will = Mechanic.create!(name: 'Will', years_experience: 3)
+      faith = Mechanic.create!(name: 'Faith', years_experience: 2)
+      ride_mechanic1 = RideMechanic.create!(ride: ride1, mechanic: steve)
+      ride_mechanic2 = RideMechanic.create!(ride: ride1, mechanic: amanda)
+      ride_mechanic3 = RideMechanic.create!(ride: ride2, mechanic: will)
+      ride_mechanic4 = RideMechanic.create!(ride: ride2, mechanic: steve)
+      ride_mechanic5 = RideMechanic.create!(ride: ride3, mechanic: faith)
+      ride_mechanic6 = RideMechanic.create!(ride: ride3, mechanic: will)
+      # require 'pry';binding.pry
+
+      expect(six_flags.average_mechanic_experience_on_ride).to eq([ride1, ride2, ride3])
+    end
   end
 end

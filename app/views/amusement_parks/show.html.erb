@@ -9,3 +9,21 @@
     <li><%= mechanic.name %></li>
   <% end %>
 
+<h1>Rides at this park:</h1>
+<table>
+  <thead>
+    <tr>Ride name     </tr>
+    <tr>Avg Mechanic experience</tr>
+  </thead>
+  <tbody>
+    <%@amusement_park.average_mechanic_experience_on_ride.each do |ride| %>
+    <tr>
+      <td><center><%= ride.name %></center></td>
+      <td><center><%= ride.average_mechanic_experience %></center></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
