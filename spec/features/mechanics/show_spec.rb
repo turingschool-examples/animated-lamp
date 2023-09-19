@@ -26,5 +26,32 @@ RSpec.describe "Mechanics Show", type: :feature do
       expect(page).to_not have_content(@mechanic_2.name)
       expect(page).to_not have_content(@ride_2.name)
     end
+
+    it "I see a form to add a ride to their workload" do
+      visit "/mechanics/#{@mechanic_1.id}"
+
+      within("#ride-form") do
+        expect(page).to have_field("ride_id")
+        expect(page).to have_button("Add Ride")
+      end
+    end
+
+    it "when I fill in the ride form with an ID, the corresponding ride is added to their workload and the page displays the newly added ride" do
+      visit "/mechanics/#{@mechanic_1.id}"
+
+      expect(page).to_not have_content(@ride_2.name)
+
+      within("#ride-form") do
+        fill_in("ride_id", with: @ride_2.id)
+        click_button("Add Ride")
+      end
+
+      expect(page).to have_current_path("/mechanics/#{@mechanic_1.id}")
+
+      within("#mechanic-rides") do
+        expect(page).to have_content(@ride_1.name)
+        expect(page).to have_content(@ride_2.name)
+      end
+    end
   end
 end
