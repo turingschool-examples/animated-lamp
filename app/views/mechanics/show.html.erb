@@ -1,0 +1,11 @@
+<h1>Mechanic's Show Page</h1>
+<p>Name: <%= @mechanic.name %></p>
+<p>Years of Experience: <%= @mechanic.years_experience %></p>
+
+<h1><%= "Current rides they are working on:" %></h1>
+<p id="rides"> Current rides they are working on: 
+  <% @mechanic.rides.each do |ride| %>
+  <li>ITEM NAME: <%= ride.name %></li>
+  <br>
+  <% end %>
+</p>
