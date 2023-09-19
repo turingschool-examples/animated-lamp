@@ -3,12 +3,10 @@
 
 <h3>Admission Cost:<%= @parks.admission_cost %>
 
-<section id="mechanics">
   <ul>
-  <% @parks.rides.each do |ride| %>
+  <% @mechanics_on_site.each do |mechanic| %>
     <li>
-    <p><%= "#{ride.mechanics_working}" %></p>
+    <p><%= mechanic.name %></p>
     </li>
   <% end %>
   </ul>
-</section>

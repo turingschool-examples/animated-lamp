@@ -37,10 +37,19 @@ RSpec.describe "amusement park #show" do
         expect(page).to have_content(@theme_park.admission_cost)
       end
 
+
+      #Could not get this to work or figure out how to get it to work
+
+      #maybe could have done something through a new relationship with amusement parks and mechanics? 
+      #frustrating and making me freaked about the final IC though.
       it "see the names of all mechanics that are working on that park's rides" do
         visit "/amusement_parks/#{@theme_park.id}"
 
-        expect(page).to match_array([@mechanic_1.name, @mechanic_2.name, @mechanic_3.name, @mechanic_4.name])
+        expect(page).to have_content(@mechanic_1.name)
+        expect(page).to have_content(@mechanic_2.name)
+        expect(page).to have_content(@mechanic_3.name)
+        expect(page).to have_content(@mechanic_4.name)
+
       end
 
     end
