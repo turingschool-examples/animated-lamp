@@ -7,6 +7,7 @@ RSpec.describe "Amusement Park Show Page", type: :feature do
     @twirlygig = @six_flags.rides.create!(name: "twirlygig", thrill_rating: 4, open: false)
     @mind_eraser = @six_flags.rides.create!(name: "Mind Eraser", thrill_rating: 10, open: false)
     RideMechanic.create!(ride_id: @twirlygig.id, mechanic_id: @joe.id)
+    RideMechanic.create!(ride_id: @mind_eraser.id, mechanic_id: @joe.id)
   end
   describe "As a visitor" do
     describe "When I visit /amusement_parks/:id" do
@@ -20,11 +21,15 @@ RSpec.describe "Amusement Park Show Page", type: :feature do
 
       it "and I see the names of all mechanics workin on that parks rides" do
 
+        visit "/amusement_parks/#{@six_flags.id}"
+
         expect(page).to have_content(@joe.name)
       end
 
       it "and I see that the list of mechanics is unique" do
 
+        visit "/amusement_parks/#{@six_flags.id}"
+        save_and_open_page
         expect(page).to have_content(@joe.name, count: 1)
       end
     end
