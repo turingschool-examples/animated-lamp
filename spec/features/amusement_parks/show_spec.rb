@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe AmusementPark, type: :model do
+RSpec.describe "Mechanics Show", type: :feature do
   before(:each) do
     @mechanic = Mechanic.create(name: "Kara Smith", years_experience: 11)
     @mechanic2 = Mechanic.create(name: "Cara Smith", years_experience: 12)
@@ -12,13 +12,13 @@ RSpec.describe AmusementPark, type: :model do
     MechanicRide.create(ride_id: @ride3.id, mechanic_id: @mechanic2.id)
   end
 
-  describe "relationships" do
-    it { should have_many(:rides) }
-  end
+  it "I see the name and price of admissions for that amusement park along with mechanics on that park" do 
+    visit "/amusement_parks/#{@amusement_park.id}"
 
-  describe "#all_mechanics" do
-    it "gives distinct list of all mechanics" do 
-      expect(@amusement_park.all_mechanics).to eq([@mechanic, @mechanic2])
-    end
+    expect(page).to have_content(@amusement_park.name)
+    expect(page).to have_content(@amusement_park.admission_cost)
+
+    expect(page).to have_content(@mechanic.name)
+    expect(page).to have_content(@mechanic2.name)
   end
 end

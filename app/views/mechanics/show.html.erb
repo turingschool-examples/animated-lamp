@@ -1,0 +1,18 @@
+<h1>Name: <%= @mechanic.name %></h1>
+<h1>Years experience: <%= @mechanic.years_experience %></h1>
+
+<section>
+  <p>List of Rides:</p>
+  <ol>
+    <% @mechanic.rides.each do |ride| %>
+      <li><%= ride.name %></li>
+    <% end %>
+  </ol>
+</section>
+
+<h1> Add Ride </h1>
+<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, data: { turbo: false } do |form| %> 
+  <%= form.label :ride_id, "Ride Id" %><br>
+  <%= form.text_field :ride_id %>
+  <%= form.submit "Add Ride" %>
+<% end %>

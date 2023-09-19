@@ -1,0 +1,7 @@
+<h1>Name: <%= @amusement_park.name %></h1>
+<h1>Admission Cost: <%= @amusement_park.admission_cost %></h1>
+
+<h1> All Mechanics Working On This Park </h1>
+<% @amusement_park.all_mechanics.each do |mechanic| %>
+  <%= mechanic.name %> 
+<% end %>
