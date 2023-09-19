@@ -15,10 +15,14 @@ RSpec.describe "Mechanic Show Page", type: :feature do
         
         visit "/mechanics/#{@joe.id}"
 
-        expect(page).to have_content(@joe.name)
-        expect(page).to have_content(@joe.years_experience)
-        expect(page).to have_content(@twirlygig.name)
+        within('.mechanic') do
+          expect(page).to have_content(@joe.name)
+          expect(page).to have_content(@joe.years_experience)
+        end
 
+        within('.rides') do
+          expect(page).to have_content(@twirlygig.name)
+        end
       end
 
       it "I see a from to add a ride to the mechanics work load, when I
@@ -27,10 +31,15 @@ RSpec.describe "Mechanic Show Page", type: :feature do
 
         visit "/mechanics/#{@joe.id}"
 
-        fill_in "ride_id", with: @mind_eraser.id
-        click_on "Submit"
+        within('.ride_form') do
+          fill_in "ride_id", with: @mind_eraser.id
+          click_on "Submit"
+        end
 
-        expect(page).to have_content(@mind_eraser.name)
+        within('.rides') do
+          expect(page).to have_content(@twirlygig.name)
+          expect(page).to have_content(@mind_eraser.name)
+        end
       end
     end
   end

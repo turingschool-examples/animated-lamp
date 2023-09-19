@@ -1,12 +1,19 @@
+<section class='mechanic'>
 <h1>Name: <%= @mechanic.name %></h1>
 <h2>Years Experience: <%= @mechanic.years_experience %></h2>
+</section>
 <h3>Rides working on:</h3>
+<section class='rides'>
 <ul>
   <% @mechanic.rides.each do |ride| %>
     <li><%= ride.name %></li>
   <% end %>
 </ul>
+</section>
+<section class='ride_form'>
 <%= form_with url: "/mechanics/#{@mechanic.id}/ride_mechanics", method: :post, data: {turbo: false} do |f| %>
   <%= f.text_field "ride_id" %>
   <%= f.submit "Submit" %>
 <% end %>
+</section>
+
