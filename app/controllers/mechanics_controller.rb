@@ -6,6 +6,7 @@ class MechanicsController < ApplicationController
 
   def update
     @mechanic = Mechanic.find(params[:id])
-    require 'pry';binding.pry
+    new_ride = Ride.find(params[:ride_id])
+    @mechanic.rides << new_ride
   end
 end

@@ -14,9 +14,9 @@
 </div>
 
 <h4>Add a ride to workload:</h4>
-<%= form_with url: "/merchants/#{@mechanic.id}", method: :patch do |form| %>
-  <p><%= form.label :id, "Ride Id: " %>
-  <%= form.text_field :id, required: true %></p>
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch do |form| %>
+  <p><%= form.label :ride_id, "Ride Id: " %>
+  <%= form.text_field :ride_id, required: true %></p>
 
   <p><%= form.submit "Submit" %></p>
 <% end %>
