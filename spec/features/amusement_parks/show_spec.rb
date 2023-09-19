@@ -57,6 +57,11 @@ RSpec.describe "Amusement Park Show Page", type: :feature do
 
       it "I see the list of park rides is ordered by the average experience of mechanics on the ride" do
 
+        visit "/amusement_parks/#{@six_flags.id}"
+
+        within('.rides') do
+          expect("AVG Mechanic Experience: #{@joe.years_experience}").to appear_before("AVG Mechanic Experience: 6")
+        end
       end
     end
   end
