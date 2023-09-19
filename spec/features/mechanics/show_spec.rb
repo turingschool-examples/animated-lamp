@@ -16,7 +16,6 @@ RSpec.describe "Mechanic Show Page", type: :feature do
       @sue = Mechanic.create!(name: 'Sue', years_experience: 15)
       @alex = Mechanic.create!(name: 'Alex', years_experience: 20)
 
-      @ride_mechanic1 = RideMechanic.create!(mechanic_id: @alex.id, ride_id: @scrambler.id)
       @ride_mechanic1 = RideMechanic.create!(mechanic_id: @alex.id, ride_id: @hurler.id)
       @ride_mechanic1 = RideMechanic.create!(mechanic_id: @alex.id, ride_id: @ferris.id)
 
@@ -29,12 +28,22 @@ RSpec.describe "Mechanic Show Page", type: :feature do
         expect(page).to have_content("Name: Alex")
         expect(page).to have_content("Years of Experience: 20")
         expect(page).to have_content("Rides Currently Servicing:")
-        save_and_open_page
         within("div.ride-list") do
           expect(page).to have_content("Hurler")
           expect(page).to have_content("Ferris")
-          expect(page).to have_content("Scrambler")
         end
+      end
+
+      it "Has a form to add a ride to their workload" do
+        within("div.ride-list") do
+          expect(page).to have_content("Hurler")
+          expect(page).to have_content("Ferris")
+          expect(page).to_not have_content("Scrambler")
+        end
+        save_and_open_page
+
+        expect(page).to have_content("Add a ride to workload:")
+        expect(page).to have_field("Ride Id")
       end
     end
   end
