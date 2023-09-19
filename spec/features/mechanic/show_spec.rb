@@ -21,14 +21,17 @@ RSpec.describe "Mechanic Show Page", type: :feature do
 
       end
 
-      # it "I see a from to add a ride to the mechanics work load, when I
-      # fill it in with an existing ride ID and click submit I'm taken back to
-      # the mechanics show page and see the name of the newly added ride" do
+      it "I see a from to add a ride to the mechanics work load, when I
+      fill it in with an existing ride ID and click submit I'm taken back to
+      the mechanics show page and see the name of the newly added ride" do
 
-      #   visit "/mechanics/#@joe.id}"
+        visit "/mechanics/#{@joe.id}"
 
-      #   fill_in "Add Ride", with(mind_eraser.id)
-      # end
+        fill_in "Add Ride", with: @mind_eraser.id
+        click_on "Submit"
+        save_and_open_page
+        expect(page).to have_content(@mind_eraser.name)
+      end
     end
   end
 end
