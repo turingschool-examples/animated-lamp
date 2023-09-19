@@ -29,3 +29,8 @@ RideMechanic.destroy_all
 @ride_mechanic2 = RideMechanic.create!(ride: @hurler, mechanic: @Amanda)
 @ride_mechanic3 = RideMechanic.create!(ride: @scrambler, mechanic: @Amanda)
 @ride_mechanic4 = RideMechanic.create!(ride: @ferris, mechanic: @Will)
+@ride_mechanic5 = RideMechanic.create!(ride: @jaws, mechanic: @Will)
+@ride_mechanic6 = RideMechanic.create!(ride: @log_flume, mechanic: @Steve)
+@ride_mechanic7 = RideMechanic.create!(ride: @scrambler, mechanic: @Steve)
+@ride_mechanic8 = RideMechanic.create!(ride: @scrambler, mechanic: @Will)
+@ride_mechanic9 = RideMechanic.create!(ride: @jaws, mechanic: @Steve)
