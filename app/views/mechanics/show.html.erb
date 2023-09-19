@@ -7,3 +7,10 @@
   <% @mechanic.rides.each do |ride| %>
     <li><%= ride.name %></li>
   <% end %>
+
+  <p>Add a ride to docket</p>
+  <%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, data:{turbo: false} do |form| %>
+    <%= form.label :ride_id, "ride ID" %>
+    <%= form.number_field :ride_id %>
+    <%= form.submit "Add Ride"%>
+  <% end %>
