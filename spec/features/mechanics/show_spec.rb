@@ -37,6 +37,8 @@ RSpec.describe "the mechanics show page" do
 
     visit "/mechanics/#{mechanic.id}"
 
+    save_and_open_page
+
     fill_in( :ride_id, with: carousel.id)
     click_button("Submit")
 
