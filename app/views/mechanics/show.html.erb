@@ -1,12 +1,18 @@
 <h3>Mechanic Show Page</h3>
 <br>
 <h4>Name: <%= @mechanic.name %></h4>
-<br>
-<h5>Years of Experience: <%= @mechanic.years_experience %></h5>
-<br>
-<h5>Rides:</h5>
+<p>Years of Experience: <%= @mechanic.years_experience %></p>
+<p>Add a new ride:</p>
+<ul>
+  <li><%= form_with model: RideMechanic.new, data: {turbo: false} do |form| %>
+        <%= form.hidden_field :mechanic_id, value: @mechanic.id %>
+        <%= form.label :ride_id, "Select Ride ID" %>
+        <%= form.select :ride_id, options_for_select(@ride_ids) %>
+        <%= form.submit "Submit" %>
+      <% end %></li>
+<p>Rides:</p>
 <section id="rides">
-  <ul>
+  <ul style="list-style-type:none">
     <% @mechanic.rides.each do |ride| %>
       <li><%= ride.name %></li>
     <% end %>
