@@ -1,0 +1,14 @@
+<section id="ap_details"> 
+  <h1> Park Details</h1>
+  <p><strong>Park Name: </strong><%= @ap.name %></p>
+  <p><strong>Cost of Admission: </strong><%= "$#{@ap.admission_cost}" %></p>
+</section>
+
+<section id="active_mechanics">
+  <h2>Park Mechanics:</h2>
+  <% @ap.park_mechanics.each do |mechanic| %>
+    <ul>
+      <li><%= mechanic.name %>
+    </ul>
+  <% end %>
+</section>
