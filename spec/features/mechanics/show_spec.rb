@@ -7,6 +7,7 @@ RSpec.describe "mechanics #show" do
     @ride_1 = @theme_park.rides.create!(name: "Puke Monster", thrill_rating: 3, open: false)
     @ride_2 = @theme_park.rides.create!(name: "Carousel", thrill_rating: 9, open: false)
     @ride_3 = @theme_park.rides.create!(name: "The Nauseator", thrill_rating: 6, open: false)
+    @ride_4 = @theme_park.rides.create!(name: "Eggsplosion", thrill_rating: 25, open: false)
 
 
     @mechanic_1 = Mechanic.create!(name: "MC Ride", years_experience: 3)
@@ -26,7 +27,7 @@ RSpec.describe "mechanics #show" do
   # As a user,
   # When I visit a mechanic show page
   # I see their name, years of experience, and the names of all rides they are working on.
-  describe "mechanic #show" do
+  describe "mechanic #show page US1 " do
     it "when I visit a mechanic show page I see their name and years of experience" do
       visit "/mechanics/#{@mechanic_1.id}"
 
@@ -49,8 +50,26 @@ RSpec.describe "mechanics #show" do
   # When I fill in that field with an id of an existing ride and click Submit
   # I’m taken back to that mechanic's show page
   # And I see the name of that newly added ride on this mechanic's show page.
-  
 
+  describe "see a form to add a ride to their workload US 2" do
+    it "can fill in that field with an id of an existing ride and click submit, take you back to the mechanics show page and see the ame of that newly added ride" do
+      visit "/mechanics/#{@mechanic_1.id}"
 
+      expect(page).to have_content(@ride_1.name)
+      expect(page).to have_content(@ride_2.name)
+      expect(page).not_to have_content(@ride_4.name)
 
+      within("#add_ride-#{@mechanic_1.id}") do
+        expect(page).to have_content("Add another ride to their workload")
+
+        fill_in(:add_ride, with: @ride_4.id )
+        click_button("Submit")
+        expect(current_path).to eq("/mechanics/#{@mechanic_1.id}")
+      end
+      # I could get this to work on the server but not the test for forever!! :/
+      # This drove me crazy! I had to refactor my create method in the mechanic_rides_controller
+
+      expect(page).to have_content(@ride_4.name)
+    end
+  end
 end

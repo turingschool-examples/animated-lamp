@@ -22,6 +22,7 @@ Ride.destroy_all
 @ride_1 = @theme_park.rides.create!(name: "Puke Monster", thrill_rating: 3, open: false)
 @ride_2 = @theme_park.rides.create!(name: "Carousel", thrill_rating: 9, open: false)
 @ride_3 = @theme_park.rides.create!(name: "The Nauseator", thrill_rating: 6, open: false)
+@ride_4 = @theme_park.rides.create!(name: "Eggsplosion", thrill_rating: 25, open: false)
 
 
 @mechanic_1 = Mechanic.create!(name: "MC Ride", years_experience: 3)
