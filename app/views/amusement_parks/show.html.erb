@@ -5,6 +5,7 @@
 <p>Mechanics that work here:</p>
 <ul>
   <% @mechanics.each do |mechanic| %>
+  <section id= "mechanic-<%= mechanic.id %>">
     <li><%= mechanic.name %></li>
   <% end %>
 
