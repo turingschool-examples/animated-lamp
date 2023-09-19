@@ -6,3 +6,9 @@
     <li><%= mechanic.name %></li>
   <% end %>
 </ul>
+<h3>Rides at the park:</h3>
+<ul>
+  <% @park.rides_with_mech_exp.each do |ride| %>
+    <li><%= ride.name %> AVG Mechanic Experience: <%= ride.avg_exp %></li>
+  <% end %>
+</ul>
