@@ -8,7 +8,7 @@ class AmusementPark < ApplicationRecord
 
   def average_ride_experience
     rides
-    .joins(:mechanics)
+    .left_joins(:mechanics)
     .select("rides.*, AVG(mechanics.years_experience) AS average_experience")
     .group("rides.id")
     .order("average_experience DESC")

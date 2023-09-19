@@ -16,6 +16,6 @@
 <h3>Park Rides:</h3>
 <ul id="rides">
   <% @park.average_ride_experience.each do |ride| %>
-    <li id="ride-<%= ride.id %>"><%= ride.name %> - Average mechanic experience: <%= ride.average_experience %> years</li>
+    <li id="ride-<%= ride.id %>"><%= ride.name %> - Average mechanic experience: <%= ride.average_experience == nil ? 0 : ride.average_experience %> years</li>
   <% end %>
 </ul>
