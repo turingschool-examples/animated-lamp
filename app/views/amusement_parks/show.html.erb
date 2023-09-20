@@ -1,0 +1,17 @@
+<h1><%= @amusement_park.name %></h1>
+<p><strong>Admission Cost:</strong> <%= @amusement_park.admission_cost %></p>
+<br>
+<div id="mechanics">
+  <h3>Mechanics:</h3>
+  <%= @amusement_park.hired_mechanics.each do |mechanic| %>
+    <p><%= mechanic.name %></p>
+  <% end %>
+</div>
+<!-- This is where the extension should be. I wasn't able to get the AR query to work in time... -->
+<!-- <div id="rides">
+  <h3>Rides:</h3>
+  <%# <%= @amusement_park.rides_by_avg_experience.each do |ride| %> %>
+    <%# <h5><%= ride.name %></h5> %>
+    <%# <p><strong>Average Experience of Mechanics:</strong> <%= ride.average_mech_experience %></p> %>
+  <%# <% end %> %>
+</div> -->
